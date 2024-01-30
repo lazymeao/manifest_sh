@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="lazymeao"
+            fetch="https://github.com/lazymeao"/>
+
+    <project path="build/make" name="shrp_build" remote="lazymeao" revision="v3_11.0" groups="pdk">
+        <copyfile src="core/root.mk" dest="Makefile"/>
+        <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk"/>
+        <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default"/>
+        <linkfile src="core" dest="build/core"/>
+        <linkfile src="envsetup.sh" dest="build/envsetup.sh"/>
+        <linkfile src="target" dest="build/target"/>
+        <linkfile src="tools" dest="build/tools"/>
+        <linkfile src="shrp" dest="build/shrp" />
+    </project>
+
+    <project path="bootable/recovery" name="bootable_recovery" remote="lazymeao" revision="android-11.0"/>
+    <project path="vendor/shrp" name="android_vendor_shrp" remote="lazymeao" revision="v3_11"/>
+  
+    <project path="vendor/twrp" name="android_vendor_twrp" remote="lazymeao" revision="android-11" >
+       <copyfile src="dummy/Android.mk" dest="frameworks/base/core/xsd/vts/Android.mk" />
+       <copyfile src="dummy/Android.mk" dest="frameworks/base/services/core/xsd/vts/Android.mk" />
+       <copyfile src="dummy/Android.mk" dest="system/libvintf/xsd/compatibilityMatrix/vts/Android.mk" />
+       <copyfile src="dummy/Android.mk" dest="system/libvintf/xsd/halManifest/vts/Android.mk" />
+    </project>
+</manifest>
